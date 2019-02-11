@@ -1,35 +1,10 @@
 
 
 ___
-# Assignment:
+## Assignment:
 
 #### Build a PokeDex:
 * **Lab**: [url](https://github.com/mmosayed/PCNW-U4-Lab2)
-
-### Breakdown:
-1. Containers:
-    * Pokedex: 
-        * NavBar
-        * Pokemon Index
-
-
-    * Pokemon Profile:
-        * NavBar
-        * Tags
-        * Moves
-
-2. Components:
-    * NavBar: Contains searchBar component
-    * Tags: For pokemon types
-    * PokeIndex:
-    * Search Bar:
-    * Moves
-
-
-
-
-
-
 
 ![pokepage layout](src/assets/pokepage_layout.png)
 ___
