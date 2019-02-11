@@ -1,0 +1,1 @@
+import './Pokedex.css'
