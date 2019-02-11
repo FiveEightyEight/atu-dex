@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
-
+import pokemon from './pokemon'
 
 class App extends Component {
   constructor(props) {
-
     super(props);
 
     this.state = {
-     Pokedex: [],
-     
+      view: 0,
+      containerView: ['Pokedex', 'Profile'],
+      Pokedex: [],
+      masterList: pokemon,
     }
   }
-
+  // this.state.pokemon['charmander']; 
   render() {
     return (
       <>
