@@ -1,7 +1,7 @@
 
 
 ___
-## Assignment:
+# Assignment:
 
 #### Build a PokeDex:
 * **Lab**: [url](https://github.com/mmosayed/PCNW-U4-Lab2)
