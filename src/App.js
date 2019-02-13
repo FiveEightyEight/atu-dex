@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import pokemon from './pokemon'
+import pokemon from './pokemon';
+import Tags from './components/Tags';
+
 
 class App extends Component {
   constructor(props) {
