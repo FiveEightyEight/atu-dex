@@ -1,0 +1,129 @@
+/* 
+.nes-btn {
+    position: relative;
+    display: inline-block;
+  
+    
+    text-align: center;
+    vertical-align: middle;
+    cursor: url(https://unpkg.com/nes.css/assets/cursor-click.png),pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: none;
+    color: #212529;
+    background-color: #fff;
+    box-shadow: inset -4px -4px #adafbc;
+    padding: 0px;
+    margin: 0px;
+}
+
+.nes-btn:focus,.nes-btn:hover {
+    background-color: #e7e7e7;
+    box-shadow: inset -6px -6px #adafbc
+}
+
+.nes-btn:active {
+    box-shadow: inset 4px 4px #adafbc
+} */
+
+.nes-btn.disabled{
+  pointer-events: none;
+}
+.nes-btn.bothTag {
+    margin: 10px;
+    padding: 5px;
+    width: 25%;
+
+}
+
+.nes-btn.normal {
+    background-color: #A8A878;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.fire {
+    background-color: #F0803A;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.fighting {
+    background-color: #C03028;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.water {
+    background-color: #6890F0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.flying {
+    background-color: #A890F0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.grass {
+    background-color: #78C850;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.poison {
+    background-color: #A040A0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.electric {
+    background-color: #F8D048;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.ground {
+    background-color: #E0C068;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.psychic {
+    background-color: #ED5687;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.rock {
+    background-color: #E0C068;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.ice {
+    background-color: #98D7D8;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.bug {
+    background-color: #A8B837;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.dragon {
+    background-color: #ED99AC;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.ghost {
+    background-color: #705898;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.dark {
+    background-color: #705848;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.steel {
+    background-color: #B8B8D0;
+    font-family: 'Press Start 2P', cursive;
+}
+
+.nes-btn.fairy {
+    background-color: #ED99AC;
+    font-family: 'Press Start 2P', cursive;
+}
