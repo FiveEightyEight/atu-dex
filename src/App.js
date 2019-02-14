@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import pokemon from './pokemon';
+import pokemon from './pokemon'
+import SearchBar from './components/SearchBar';
 import Tags from './components/Tags';
+const pokemonNames = Object.keys(pokemon);
+
+
 
 
 class App extends Component {
