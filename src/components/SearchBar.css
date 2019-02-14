@@ -1,0 +1,37 @@
+*{
+    font-family: 'Press Start 2P', cursive;
+}/* .nes-btn{
+    margin: 0px;
+    padding: 0px;
+} */
+
+.top-bar {
+    height: 12px;
+    width: 100%;
+    margin: 10px;
+
+}
+
+
+.shdow {
+    position: relative;
+    display: inline-block;
+    padding: 10px 12px;
+    margin: 4px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: url(https://unpkg.com/nes.css/assets/cursor-click.png), pointer;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+    border: none;
+    color: #212529;
+    background-color: #fff;
+    box-shadow: inset -4px -4px #adafbc;
+}
+
+.searchBar {
+    margin: 0;
+}
+
