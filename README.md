@@ -52,13 +52,27 @@ Primary functions
 
 2. **Function type: _PROMISE_**: `buildPokemon(name)`: takes a pokemon _*name*_ `string` *OR* a *data* from `getPokemonData(name)` and returns a pokemon object which should be stored in state.pokemon. Note '_data_' should be extracted from `getPokemonData(name)` response when passed into buildPokemon using (`response.data`)
 
-3. **Function type: Factory**: `buildMove(name)`: takes a move *_name_* and returns an object containing the move's properties. This object should be stored in state.moves with the key name being the move name itself (lowercase)
+3. **Function type: _PROMISE_**: `buildMove(name)`: takes a move *_name_* and returns an object containing the move's properties. This object should be stored in state.moves with the key name being the move name itself (lowercase)
 
 *Other functions are mostly helpers for above functions*
 
+#### *Examples:*
+
+|Function Name|Invocation Example| Returns |
+|:------------- |:-------------:| -----:| 
+|`buildPokemon(name)`| ![build Pokemon function example image](src/assets/buildPokemon_example.png) | ![build Pokemon function result image](src/assets/pokemon_object.png)|
+|`buildMove(name)` |![build Move function example image](src/assets/buildMove_example.png) | ![build Move function result image](src/assets/buildMove_result.png) | 
+
+#### *Pokemon Object Breakdown*:
+
+|Key | Image | Note|
+|:---|:----:| ---:|
+|Sprites| ![pokemon sprites key](src/assets/pokemon_object_key_sprites.png) | Array will be greater than 4 if pokemon has female sprite versions, *ex*: 'Butterfree'|
+|Stats| ![pokemon stats key](src/assets/pokemon_object_key_stats.png) | Stats will always follow this order (HP, Attack, Defense, Sp.Attack, Sp.Defense, Speed). Each index contains an object with the name of the stat and base_stat value|
+
 ___
 
-## *Page Grid Breakdown*
+## *Pokemon Profile Page Grid Breakdown*
 
 ![pokepage layout](src/assets/pokepage_layout.png)
 ___
