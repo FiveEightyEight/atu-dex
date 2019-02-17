@@ -868,7 +868,16 @@ const charizard = {
 
 const validate = (input, arr = pokemonList) => {
     const cleanInput = input.trim().toLowerCase();
-    return arr.includes(cleanInput);
+    return arr.reduce((acc, e) => {
+        const pokemon = e.toLowerCase()
+        if (pokemon === cleanInput) {
+            acc = true;
+        }
+        return acc;
+    }, false);
+
+
+    // return arr.includes(cleanInput);
 };
 
 const getPokemonData = (name = 'charizard') => {
@@ -876,27 +885,36 @@ const getPokemonData = (name = 'charizard') => {
 };
 
 const buildPokemon = (pokemon) => {
-    // checks pokemon, if valid pokemon object continue to line 84
-    // if NOT, validate that it is a pokemon and get pokemon data, call buildPokemon again
-    if (!pokemon.abilities || !pokemon.moves) {
-        if (!validate(pokemon)) {
-            throw new Error('invalid pokemon, enter name or data')
-        } else {
-            getPokemonData(pokemon)
-                .then(response => {
-                    return buildPokemon(response.data)
-                }).catch(err => {
-                    return err;
-                })
+    console.log('building pokemon')
+    return new Promise((resolve, reject) => {
+        // checks pokemon, if valid pokemon object continue to line 84
+        // if NOT, validate that it is a pokemon and get pokemon data, call buildPokemon again
+        if (typeof pokemon === 'string') {
+            if (!validate(pokemon)) {
+                reject('Pokemon not found');
+                // return false;
+            } else {
+                return getPokemonData(pokemon)
+                    .then(response => {
+                        resolve(buildPokemon(response.data))
+                    }).catch(err => {
+                        reject(err);
+                    })
+            }
         }
-    }
-    const monster = {};
+        const monster = {};
 
-    monster['name'] = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
-    monster['number'] = getPokemonNumber(pokemon.id);
-    monster['sprites'] = getSprites(pokemon.sprites);
-    monster['picture'] = `https://img.pokemondb.net/artwork/${pokemon.name}.jpg`
-    monster['types'] = getTypes(pokemon.types);
+        monster['name'] = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
+        monster['number'] = getPokemonNumber(pokemon.id);
+        monster['sprites'] = getSprites(pokemon.sprites);
+        monster['picture'] = `https://img.pokemondb.net/artwork/${pokemon.name}.jpg`
+        monster['types'] = getTypes(pokemon.types);
+        monster['moves'] = getMoves(pokemon.moves);
+
+
+        resolve(monster)
+
+    });
 };
 
 const getPokemonNumber = (number) => {
@@ -904,7 +922,7 @@ const getPokemonNumber = (number) => {
         return `00${number}`;
     } else if (number > 9 && number < 100) {
         return `0${number}`
-    } else if (number > 99){
+    } else if (number > 99) {
         return `${number}`
     } else {
         return null;
@@ -913,51 +931,51 @@ const getPokemonNumber = (number) => {
 
 const getSprites = (sprites) => {
     const arr = [];
-    if(sprites.front_default) {
+    if (sprites.front_default) {
         arr[0] = {
             name: 'default',
             sprite: sprites.front_default,
         }
     }
-    if(sprites.front_shiny) {
+    if (sprites.front_shiny) {
         arr[1] = {
-            name:'shiny',
+            name: 'shiny',
             sprite: sprites.front_shiny,
         }
     }
-    if(sprites.back_default) {
+    if (sprites.back_default) {
         arr[2] = {
             name: 'default',
             sprite: sprites.back_default,
         }
     }
-    if(sprites.back_shiny) {
+    if (sprites.back_shiny) {
         arr[3] = {
-            name:'shiny',
+            name: 'shiny',
             sprite: sprites.back_shiny,
         }
     }
-    if(sprites.front_female) {
+    if (sprites.front_female) {
         arr[4] = {
             name: 'female',
             sprite: sprites.front_female,
         }
     }
-    if(sprites.front_shiny_female) {
+    if (sprites.front_shiny_female) {
         arr[5] = {
-            name:'shiny female',
+            name: 'shiny female',
             sprite: sprites.front_shiny_female,
         }
     }
-    if(sprites.back_female) {
+    if (sprites.back_female) {
         arr[6] = {
             name: 'female',
             sprite: sprites.back_female,
         }
     }
-    if(sprites.back_shiny_female) {
+    if (sprites.back_shiny_female) {
         arr[7] = {
-            name:'shiny female',
+            name: 'shiny female',
             sprite: sprites.back_shiny_female,
         }
     }
@@ -965,9 +983,18 @@ const getSprites = (sprites) => {
 };
 
 const getTypes = (types) => {
-    
+    const arr = [];
+    for (let i = 0; i < types.length; i++) {
+        const type = types[i];
+        arr[type.slot - 1] = type.type.name;
+    }
+    return arr;
 }
- // getPokemonData()
+
+const getMoves = (moves) => {
+ return true;
+}
+// getPokemonData()
 // .then( (response) => {
 //     console.log('response.data: ', response.data); 
 // })
@@ -977,5 +1004,6 @@ const getTypes = (types) => {
 
 export {
     validate,
-    getPokemonData
+    getPokemonData,
+    buildPokemon,
 };
