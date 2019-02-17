@@ -30,7 +30,10 @@ class App extends Component {
   render() {
     return (
       <>
-        <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch}/>
+        <div className='m-2 nes-container'>
+        <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+
+      </div>
       </>
     );
   }
