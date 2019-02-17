@@ -992,7 +992,12 @@ const getTypes = (types) => {
 }
 
 const getMoves = (moves) => {
- return true;
+    const arr = [];
+    for (let i = 0; i < moves.length; i++) {
+        const move = moves[i].move;
+        arr.push(move.name)
+    }
+    return arr;
 }
 // getPokemonData()
 // .then( (response) => {
