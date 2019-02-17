@@ -19,7 +19,7 @@ class App extends Component {
     }
   }
 
-  testChange = (e) => {
+  handleSearch = (e) => {
     if (e.keyCode === 13) {
       console.log(e.target.value)
     }
@@ -31,7 +31,7 @@ class App extends Component {
     return (
       <>
         <h1>Hello World!</h1>
-        <NavBar pokemonList={pokemonNames} get={this.testChange}/>
+        <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch}/>
       </>
     );
   }

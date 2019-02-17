@@ -9,7 +9,7 @@ const SearchBar = (props) => {
                 <div className='nes-container with-title'>
                     <h2 className="title">Search</h2>
                     <div className='col-md-auto'>
-                        <input className='nes-input' type="text" onKeyDown={props.get} list="pokemonList" />
+                        <input className='nes-input' type="text" onKeyDown={props.handleSearch} list="pokemonList" />
                         <datalist className='nes-container is-rounded'  id="pokemonList">
                             {props.results.map((e, i) => {
                                 return <option className='nes-container is-rounded' value={e} key={i}>{e}</option>

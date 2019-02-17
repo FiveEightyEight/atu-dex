@@ -16,7 +16,7 @@ const NavBar = (props) => {
 
                     <div className='p-3 offset-1 col-6'>
                         <div className='col-12 text-center'><h2 className='p-2'>ATU - Pokedex</h2></div>
-                        <SearchBar results={props.pokemonList} get={props.get}/>
+                        <SearchBar results={props.pokemonList} handleSearch={props.handleSearch}/>
                     </div>
 
                     <i className="mt-5 col-1 offset-1 nes-pokeball"></i>
