@@ -30,7 +30,6 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>Hello World!</h1>
         <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch}/>
       </>
     );
