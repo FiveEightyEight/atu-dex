@@ -44,6 +44,20 @@ ___
 
 * **Trello** - [URL](https://trello.com/invite/b/UAptvJuA/c445281bba07bf3beabd04cff5a3975b/pokedex)
 
+___
+### _**main.js:**_
+Primary functions
+
+1. **Function type: _PROMISE_**: `getPokemonData(name)`: takes a pokemon _*name*_ `string` and returns json response containing pokemon data
+
+2. **Function type: _PROMISE_**: `buildPokemon(name)`: takes a pokemon _*name*_ `string` *OR* a *data* from `getPokemonData(name)` and returns a pokemon object which should be stored in state.pokemon. Note '_data_' should be extracted from `getPokemonData(name)` response when passed into buildPokemon using (`response.data`)
+
+3. **Function type: Factory**: `buildMove(name)`: takes a move *_name_* and returns an object containing the move's properties. This object should be stored in state.moves with the key name being the move name itself (lowercase)
+
+*Other functions are mostly helpers for above functions*
+
+___
+
 ## *Page Grid Breakdown*
 
 ![pokepage layout](src/assets/pokepage_layout.png)
