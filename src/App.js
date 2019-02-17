@@ -133,13 +133,20 @@ class App extends Component {
       })
   };
 
+
+handleScroll = (e) => {
+console.log('here!!')
+}
+
   //'Pokedex', 'Profile', 'Move'
   handleView = (page) => {
     switch (page) {
 
       case 'Pokedex':
         return (
+            <div className='offset-1 col-10 nes-container row' onScroll={this.handleScroll}>
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
+            </div>
         );
 
       case 'Profile':
