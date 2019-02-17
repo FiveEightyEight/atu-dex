@@ -133,29 +133,27 @@ class App extends Component {
 
   //'Pokedex', 'Profile', 'Move'
   handleView = (page) => {
-    switch(page) {
+    switch (page) {
 
       case 'Pokedex':
-      return (
-        <>
-        <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick}/>
-        </>
-      );
+        return (
+            <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
+        );
 
       case 'Profile':
-      return (
-        <>
-        </>
-      );
-      
-      case 'Move':
-      return (
-        <>
-        </>
-      );
+        return (
+          <>
+          </>
+        );
 
-      default: 
-      return this.renderPage('Pokedex');
+      case 'Move':
+        return (
+          <>
+          </>
+        );
+
+      default:
+        return this.renderPage('Pokedex');
     }
   }
 
@@ -164,7 +162,10 @@ class App extends Component {
       <>
         <div className='m-2 nes-container'>
           <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
-          {this.handleView(this.state.containerView[this.state.view])}
+          <hr/>
+          <div className='row'>
+            {this.handleView(this.state.containerView[this.state.view])}
+          </div>
         </div>
       </>
     );
