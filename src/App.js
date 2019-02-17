@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
 import NavBar from './components/NavBar';
+import { getPokemonData, buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
-
-
 
 
 class App extends Component {
@@ -13,27 +12,42 @@ class App extends Component {
 
     this.state = {
       view: 0,
-      containerView: ['Pokedex', 'Profile'],
-      Pokedex: [],
+      containerView: ['Pokedex', 'Profile', 'Move'],
+      pokedex: [],
+      pokemon: {},
+      moves: {},
+      currentPokemon: null,
+      currentMove: null,
+      limit: 0,
       masterList: pokemon,
     }
   }
 
-  handleSearch = (e) => {
-    if (e.keyCode === 13) {
-      console.log(e.target.value)
-    }
-    // console.log(e.target.value);
+  componentDidMount() {
+    // Populate Pokedex on page load
+    loadPokedex(this.state.limit, this.state.pokedex)
+    .then( tempDex => {
+      this.setState({
+        pokedex: tempDex,
+      })
+    })
+    .catch (err => {
+      console.log('error loadingPokeDex: ', err)
+    })
 
   }
-  // this.state.pokemon['charmander']; 
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('Previous State: ', prevState)
+    console.log('Current State: ', this.state)
+  }
+
   render() {
     return (
       <>
         <div className='m-2 nes-container'>
-        <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
-
-      </div>
+          <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+        </div>
       </>
     );
   }
