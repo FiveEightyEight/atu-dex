@@ -845,7 +845,6 @@ const getTags = (poke_name = `bulbasaur`) => {
 //  Make's sure pokemon name entered is valid
 // Check if pokemon object entered exists in array before checking
  
-
 2.  API function
 //  Calls API for pokemon name
 
@@ -863,7 +862,6 @@ const charizard = {
     "stats": [45, 49, 49, 65, 65, 45], // HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed
     "index": 5
 }
-
 */
 
 const validate = (input, arr = pokemonList) => {
@@ -875,9 +873,6 @@ const validate = (input, arr = pokemonList) => {
         }
         return acc;
     }, false);
-
-
-    // return arr.includes(cleanInput);
 };
 
 const getPokemonData = (name = 'charizard') => {
@@ -903,7 +898,6 @@ const buildPokemon = (pokemon) => {
             }
         }
         const monster = {};
-
         monster['name'] = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
         monster['number'] = getPokemonNumber(pokemon.id);
         monster['sprites'] = getSprites(pokemon.sprites);
@@ -911,10 +905,8 @@ const buildPokemon = (pokemon) => {
         monster['types'] = getTypes(pokemon.types);
         monster['moves'] = getMoves(pokemon.moves);
         monster['stats'] = getStats(pokemon.stats);
-
-
+        monster['index'] = pokemon.id - 1;
         resolve(monster)
-
     });
 };
 
@@ -1044,16 +1036,33 @@ const getStats = (stats) => {
     }
     return arr;
 }
-// getPokemonData()
-// .then( (response) => {
-//     console.log('response.data: ', response.data); 
-// })
-// .catch( err => {
-//     console.log('err: ', err);
-// })
+
+const getMoveInfo = (move) => {
+    const cleanMove = move.trim().toLowerCase();
+    return axios.get(`https://pokeapi.co/api/v2/move/${cleanMove}/`)
+}
+
+const buildMove = (move) => {
+    return getMoveInfo(move)
+    .then( response => {
+        return response.data
+    })
+    .then( data => {
+        return {
+            name: data.name.toUpperCase(),
+            type: data.type.name[0].toUpperCase() + data.type.name.slice(1),
+            power: data.power,
+            pp: data.pp,
+        }
+    })
+    .catch( err => {
+        return 'error getting moves'
+    })
+}
 
 export {
     validate,
     getPokemonData,
     buildPokemon,
+    buildMove,
 };
