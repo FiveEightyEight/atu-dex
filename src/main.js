@@ -944,37 +944,37 @@ const getStats = (stats) => {
     const arr = [];
     for (let i = 0; i < stats.length; i++) {
         const stat = stats[i];
-        if(stat.stat.name === 'hp') {
+        if (stat.stat.name === 'hp') {
             arr[0] = {
                 name: 'HP',
                 base_stat: stat.base_stat,
             }
         }
-        if(stat.stat.name === 'attack') {
+        if (stat.stat.name === 'attack') {
             arr[1] = {
                 name: 'Attack',
                 base_stat: stat.base_stat,
             }
         }
-        if(stat.stat.name === 'defense') {
+        if (stat.stat.name === 'defense') {
             arr[2] = {
                 name: 'Defense',
                 base_stat: stat.base_stat,
             }
         }
-        if(stat.stat.name === 'special-attack') {
+        if (stat.stat.name === 'special-attack') {
             arr[3] = {
                 name: 'Sp.Attack',
                 base_stat: stat.base_stat,
             }
         }
-        if(stat.stat.name === 'special-defense') {
+        if (stat.stat.name === 'special-defense') {
             arr[4] = {
                 name: 'Sp.Defense',
                 base_stat: stat.base_stat,
             }
         }
-        if(stat.stat.name === 'speed') {
+        if (stat.stat.name === 'speed') {
             arr[5] = {
                 name: 'Speed',
                 base_stat: stat.base_stat,
@@ -991,20 +991,53 @@ const getMoveInfo = (move) => {
 
 const buildMove = (move) => {
     return getMoveInfo(move)
-    .then( response => {
-        return response.data
-    })
-    .then( data => {
-        return {
-            name: data.name.toUpperCase(),
-            type: data.type.name[0].toUpperCase() + data.type.name.slice(1),
-            power: data.power,
-            pp: data.pp,
-        };
-    })
-    .catch( err => {
-        return 'error getting moves'
-    })
+        .then(response => {
+            return response.data
+        })
+        .then(data => {
+            return {
+                name: data.name.toUpperCase(),
+                type: data.type.name[0].toUpperCase() + data.type.name.slice(1),
+                power: data.power,
+                pp: data.pp,
+            };
+        })
+        .catch(err => {
+            return 'error getting moves'
+        })
+}
+
+const getPokemonList = (limit) => {
+    return axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${limit}&limit=20`)
+}
+
+const loadPokedex = (limit, pokedex) => {
+    const tempDex = [...pokedex]
+    return getPokemonList(limit)
+        .then(response => {
+            return response.data.results
+        })
+        .then(result => {
+            for(let i = 0; i < result.length; i ++ ){
+                const pokemon = result[i]
+                const split = pokemon.url.split('/');
+                const index = parseInt(split[split.length - 2], 10) - 1;
+                if(pokedex[index]){
+                    continue;
+                } else {
+                    tempDex[index] = {
+                        sprite: `https://img.pokemondb.net/sprites/sun-moon/icon/${pokemon.name}.png`,
+                        name: pokemon.name,
+                        number: getPokemonNumber(index + 1),
+                    }
+                }
+            }
+            return tempDex;
+        })
+        .catch( err => {
+            return err;
+        })
+
 }
 
 export {
@@ -1012,4 +1045,5 @@ export {
     getPokemonData,
     buildPokemon,
     buildMove,
+    loadPokedex,
 };
