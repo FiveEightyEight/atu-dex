@@ -811,58 +811,6 @@ const pokemonList = [
     "Blacephalon",
     "Zeraora"
 ]
-/*
-const getMoveList = (poke_name = `bulbasaur`) => {
-  return axios.get(`https://pokeapi.co/api/v2/pokemon/${poke_name}`)
-    .then(response => {
-      const { data } = response; // this is object of API response
-      console.log('DATA',data.moves.map(moveName => {
-        return moveName.move.name
-      }))
-    })
-}
-console.log(getMoveList())
-*/
-
-
-const getTags = (poke_name = `bulbasaur`) => {
-    return axios.get(`https://pokeapi.co/api/v2/pokemon/${poke_name}`)
-        .then(response => {
-            const {
-                data
-            } = response; // this is object of API response
-            console.log('DATA', data.types.map(types => {
-                return types.type.name
-            }))
-        })
-}
-
-/*
-
-// ----- Functions Needed ------
-
-1. Validation function
-//  Make's sure pokemon name entered is valid
-// Check if pokemon object entered exists in array before checking
- 
-2.  API function
-//  Calls API for pokemon name
-
-3. Pokemon Factory
-//  Takes in API data and spits out pokemon object
-
-// EXAMPLE:     
-const charizard = {
-    "name": "Charizard",
-    "number": "006",
-    "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/charizard.png",
-    "picture": 'URL_STRING',
-    "type": ['fire', 'flying'],
-    "moves": ['Scratch', 'Ember', 'Growl'],
-    "stats": [45, 49, 49, 65, 65, 45], // HP, Attack, Defense, Sp. Attack, Sp. Defense, Speed
-    "index": 5
-}
-*/
 
 const validate = (input, arr = pokemonList) => {
     const cleanInput = input.trim().toLowerCase();
@@ -870,7 +818,7 @@ const validate = (input, arr = pokemonList) => {
         const pokemon = e.toLowerCase()
         if (pokemon === cleanInput) {
             acc = true;
-        }
+        };
         return acc;
     }, false);
 };
@@ -887,16 +835,15 @@ const buildPokemon = (pokemon) => {
         if (typeof pokemon === 'string') {
             if (!validate(pokemon)) {
                 reject('Pokemon not found');
-                // return false;
             } else {
                 return getPokemonData(pokemon)
                     .then(response => {
                         resolve(buildPokemon(response.data))
                     }).catch(err => {
                         reject(err);
-                    })
-            }
-        }
+                    });
+            };
+        };
         const monster = {};
         monster['name'] = pokemon.name[0].toUpperCase() + pokemon.name.slice(1);
         monster['number'] = getPokemonNumber(pokemon.id);
@@ -982,7 +929,7 @@ const getTypes = (types) => {
         arr[type.slot - 1] = type.type.name;
     }
     return arr;
-}
+};
 
 const getMoves = (moves) => {
     const arr = [];
@@ -991,7 +938,7 @@ const getMoves = (moves) => {
         arr.push(move.name)
     }
     return arr;
-}
+};
 
 const getStats = (stats) => {
     const arr = [];
@@ -1035,7 +982,7 @@ const getStats = (stats) => {
         }
     }
     return arr;
-}
+};
 
 const getMoveInfo = (move) => {
     const cleanMove = move.trim().toLowerCase();
@@ -1053,7 +1000,7 @@ const buildMove = (move) => {
             type: data.type.name[0].toUpperCase() + data.type.name.slice(1),
             power: data.power,
             pp: data.pp,
-        }
+        };
     })
     .catch( err => {
         return 'error getting moves'
