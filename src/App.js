@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import pokemon from './pokemon'
 import SearchBar from './components/SearchBar';
 import Tags from './components/Tags';
-const pokemonNames = Object.keys(pokemon);
+import Moves from './components/Moves';
 
-
+//const pokemonNames = Object.keys(pokemon);
 
 
 class App extends Component {
@@ -23,6 +23,7 @@ class App extends Component {
     return (
       <>
         <h1>Hello World!</h1>
+        <Moves move1={'FirstAttack'} move2={'SecondAttack'} move3={'ThirdAttack'} />
       </>
     );
   }
