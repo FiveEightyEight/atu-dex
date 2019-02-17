@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
 import NavBar from './components/NavBar';
+import Pokedex from './containers/Pokedex';
 import { getPokemonData, buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
@@ -129,11 +130,41 @@ class App extends Component {
         console.log('err: ', err);
       })
   };
+
+  //'Pokedex', 'Profile', 'Move'
+  handleView = (page) => {
+    switch(page) {
+
+      case 'Pokedex':
+      return (
+        <>
+        <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick}/>
+        </>
+      );
+
+      case 'Profile':
+      return (
+        <>
+        </>
+      );
+      
+      case 'Move':
+      return (
+        <>
+        </>
+      );
+
+      default: 
+      return this.renderPage('Pokedex');
+    }
+  }
+
   render() {
     return (
       <>
         <div className='m-2 nes-container'>
           <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+          {this.handleView(this.state.containerView[this.state.view])}
         </div>
       </>
     );
