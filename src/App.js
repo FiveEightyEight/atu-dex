@@ -25,13 +25,6 @@ class App extends Component {
     }
   }
 
-  handleSearch = (e) => {
-    if (e.keyCode === 13) {
-      console.log(e.target.value)
-    }
-
-  }
-
   componentDidMount() {
     // Load Pokedex on page load
     loadPokedex(this.state.limit, this.state.pokedex)

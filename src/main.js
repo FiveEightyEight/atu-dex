@@ -1,5 +1,3 @@
-// import axios from '../node_modules/axios/dist/axios';
-// const axios = require('axios');
 import axios from 'axios';
 
 const pokemonList = [
