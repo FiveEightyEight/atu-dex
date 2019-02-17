@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
-import SearchBar from './components/SearchBar';
-import Tags from './components/Tags';
+import NavBar from './components/NavBar';
+
 const pokemonNames = Object.keys(pokemon);
 
 
@@ -18,11 +18,22 @@ class App extends Component {
       masterList: pokemon,
     }
   }
+
+  handleSearch = (e) => {
+    if (e.keyCode === 13) {
+      console.log(e.target.value)
+    }
+    // console.log(e.target.value);
+
+  }
   // this.state.pokemon['charmander']; 
   render() {
     return (
       <>
-        <h1>Hello World!</h1>
+        <div className='m-2 nes-container'>
+        <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+
+      </div>
       </>
     );
   }
