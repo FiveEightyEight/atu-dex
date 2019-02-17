@@ -34,14 +34,6 @@ class App extends Component {
       .catch(err => {
         console.log('error loadingPokeDex: ', err)
       })
-
-      buildMove('flamethrower')
-      .then( data => {
-        console.log('data: ', data);
-      })
-      .catch( err => {
-        console.log('err: ', err);
-      })
   }
 
   componentDidUpdate(prevProps, prevState) {
