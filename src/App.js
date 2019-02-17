@@ -53,6 +53,8 @@ class App extends Component {
 
   handleIndexClick = (e) => {
     // clicking on a pokeIndex component will trigger this function
+    const pokemon = e.target.id;
+    this.checkPokemon(pokemon);
     return;
   };
 
