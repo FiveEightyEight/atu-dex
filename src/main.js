@@ -994,7 +994,8 @@ const buildMove = (move) => {
         })
         .then(data => {
             return {
-                name: data.name.toUpperCase(),
+                name: standardMoveName(data.name), 
+                uName: standardMoveName(data.name).toUpperCase(),
                 type: data.type.name[0].toUpperCase() + data.type.name.slice(1),
                 power: data.power,
                 pp: data.pp,
@@ -1037,6 +1038,15 @@ const loadPokedex = (limit, pokedex) => {
         })
 
 }
+
+const standardMoveName = (name) => {
+    let str = name;
+    if(str.includes('-')) {
+        const arr = str.split('-')
+        return standardMoveName(arr[0]) + ' ' + standardMoveName(arr[1]); 
+    }
+    return str[0].toUpperCase() + str.slice(1);
+};
 
 export {
     validate,
