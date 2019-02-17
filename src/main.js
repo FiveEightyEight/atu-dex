@@ -910,6 +910,7 @@ const buildPokemon = (pokemon) => {
         monster['picture'] = `https://img.pokemondb.net/artwork/${pokemon.name}.jpg`
         monster['types'] = getTypes(pokemon.types);
         monster['moves'] = getMoves(pokemon.moves);
+        monster['stats'] = getStats(pokemon.stats);
 
 
         resolve(monster)
@@ -996,6 +997,50 @@ const getMoves = (moves) => {
     for (let i = 0; i < moves.length; i++) {
         const move = moves[i].move;
         arr.push(move.name)
+    }
+    return arr;
+}
+
+const getStats = (stats) => {
+    const arr = [];
+    for (let i = 0; i < stats.length; i++) {
+        const stat = stats[i];
+        if(stat.stat.name === 'hp') {
+            arr[0] = {
+                name: 'HP',
+                base_stat: stat.base_stat,
+            }
+        }
+        if(stat.stat.name === 'attack') {
+            arr[1] = {
+                name: 'Attack',
+                base_stat: stat.base_stat,
+            }
+        }
+        if(stat.stat.name === 'defense') {
+            arr[2] = {
+                name: 'Defense',
+                base_stat: stat.base_stat,
+            }
+        }
+        if(stat.stat.name === 'special-attack') {
+            arr[3] = {
+                name: 'Sp.Attack',
+                base_stat: stat.base_stat,
+            }
+        }
+        if(stat.stat.name === 'special-defense') {
+            arr[4] = {
+                name: 'Sp.Defense',
+                base_stat: stat.base_stat,
+            }
+        }
+        if(stat.stat.name === 'speed') {
+            arr[5] = {
+                name: 'Speed',
+                base_stat: stat.base_stat,
+            }
+        }
     }
     return arr;
 }
