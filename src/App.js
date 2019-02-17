@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
 import NavBar from './components/NavBar';
-import { getPokemonData, validate, buildPokemon, buildMove, loadPokedex } from './main';
+import { getPokemonData, buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
-
-
 
 
 class App extends Component {
@@ -26,7 +24,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Load Pokedex on page load
+    // Populate Pokedex on page load
     loadPokedex(this.state.limit, this.state.pokedex)
     .then( tempDex => {
       this.setState({
@@ -43,7 +41,7 @@ class App extends Component {
     console.log('Previous State: ', prevState)
     console.log('Current State: ', this.state)
   }
-  // this.state.pokemon['charmander']; 
+
   render() {
     return (
       <>
