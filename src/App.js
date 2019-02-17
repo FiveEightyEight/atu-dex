@@ -16,6 +16,7 @@ class App extends Component {
       view: 0,
       containerView: ['Pokedex', 'Profile', 'Move'],
       pokedex: [],
+      pokemon: [],
       moves: [],
       currentPokemon: null,
       currentMove: null,
@@ -28,6 +29,12 @@ class App extends Component {
       console.log(e.target.value)
     }
 
+  }
+
+  handlePokedex = (state) => {
+    if(state.pokedex.length === 0) {
+      return false;
+    }
   }
 
   componentDidMount() {
