@@ -195,8 +195,8 @@ class App extends Component {
   }
 
   handleSpriteText = (e) => {
-    if(!e.target.id) return;
-    if(e.target.id === this.state.sprite) return;
+    if (!e.target.id) return;
+    if (e.target.id === this.state.sprite) return;
     this.setState({
       sprite: e.target.id,
     })
@@ -208,7 +208,8 @@ class App extends Component {
 
       case 'Pokedex':
         return (
-          <div className='offset-1 col-10 nes-container row' >
+          <div className='offset-1 col-10 nes-container with-title row' >
+            <h2 className='title'>Pokedex</h2>
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
             <button className='col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
           </div>
@@ -217,8 +218,11 @@ class App extends Component {
       case 'Profile':
         return (
 
-          <div className='offset-1 col-10 nes-container row' >
-            <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome} handleSpriteText={this.handleSpriteText} spriteText={this.state.sprite}/>
+          <div className='offset-1 col-10 nes-container with-title row' >
+            <h2 className='title'>Pokemon Profile</h2>
+            <div className='col-12 row'>
+              <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome} handleSpriteText={this.handleSpriteText} spriteText={this.state.sprite} />
+            </div>
           </div>
 
         );
