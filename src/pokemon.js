@@ -168,7 +168,7 @@ const pokemon = {
         "index": 27
     },
     "nidoran♀": {
-        "name": "Nidoran♀",
+        "name": "Nidoran-f",
         "number": "029",
         "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/nidoran♀.png",
         "index": 28
@@ -186,7 +186,7 @@ const pokemon = {
         "index": 30
     },
     "nidoran♂": {
-        "name": "Nidoran♂",
+        "name": "Nidoran-m",
         "number": "032",
         "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/nidoran♂.png",
         "index": 31
