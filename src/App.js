@@ -19,18 +19,20 @@ class App extends Component {
       moves: {},
       currentPokemon: null,
       currentMove: null,
-      limit: 0,
+      offSet: 0,
       masterList: pokemon,
     }
   }
 
   componentDidMount() {
     // Populate Pokedex on page load
+    // const obj = this.handleLimit();
+    // if (!obj) return;
     loadPokedex(this.state.limit, this.state.pokedex)
       .then(tempDex => {
         this.setState({
           pokedex: tempDex,
-          limit: 20,
+          offSet: 20,
         })
       })
       .catch(err => {
@@ -144,23 +146,42 @@ class App extends Component {
   }
 
   handleTempLoad = (e) => {
-    let newLimit = this.state.limit;
-    loadPokedex(this.state.limit, this.state.pokedex)
+    const obj = this.handleLimit();
+    if (!obj) return;
+    const {offSet, newLimit} = obj;
+    // loadPokedex(this.state.limit, this.state.pokedex)
+    loadPokedex(offSet, this.state.pokedex, newLimit)
       .then(tempDex => {
-        if ((809 - newLimit) >= 20) {
-          newLimit += 20;
-        }
-        else {
-          newLimit += (809 - newLimit);
-        }
+        console.log('tempDex: ', tempDex)
+        // if ((809 - newLimit) >= 20) {
+        //   newLimit += 20;
+        // }
+        // else {
+        //   newLimit += (809 - newLimit);
+        // }
         this.setState({
           pokedex: tempDex,
-          limit: newLimit,
+          offSet: offSet + 20,
         })
       })
       .catch(err => {
         console.log('error loadingPokeDex: ', err)
       })
+  }
+
+  handleLimit = () => {
+    let offSet = this.state.limit
+    let newLimit = 20;
+    if (offSet >= 806) {
+        return false;
+    }
+    if(offSet > 786) {
+        newLimit = (806 - offSet);
+        return {offSet, newLimit}
+    }
+    // offSet += 20; 
+    console.log('offSet: ', offSet, 'newLimit: ', newLimit )
+     return {offSet, newLimit}
   }
 
   //'Pokedex', 'Profile', 'Move'
