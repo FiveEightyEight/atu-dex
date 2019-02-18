@@ -28,7 +28,7 @@ class App extends Component {
     // Populate Pokedex on page load
     // const obj = this.handleLimit();
     // if (!obj) return;
-    loadPokedex(this.state.limit, this.state.pokedex)
+    loadPokedex(this.state.offSet, this.state.pokedex)
       .then(tempDex => {
         this.setState({
           pokedex: tempDex,
@@ -170,7 +170,7 @@ class App extends Component {
   }
 
   handleLimit = () => {
-    let offSet = this.state.limit
+    let offSet = this.state.offSet
     let newLimit = 20;
     if (offSet >= 806) {
         return false;

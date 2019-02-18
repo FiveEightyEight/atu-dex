@@ -1011,9 +1011,7 @@ const getPokemonList = (offSet, limit) => {
 }
 
 const loadPokedex = (offSet, pokedex, limit = 20) => {
-    const tempDex = [...pokedex]
- 
-    
+    const tempDex = [...pokedex] 
     return getPokemonList(offSet, limit)
         .then(response => {
             return response.data.results
