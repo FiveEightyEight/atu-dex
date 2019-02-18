@@ -1006,13 +1006,13 @@ const buildMove = (move) => {
         })
 }
 
-const getPokemonList = (limit) => {
-    return axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${limit}&limit=20`)
+const getPokemonList = (offSet, limit) => {
+    return axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${offSet}&limit=${limit}`)
 }
 
-const loadPokedex = (limit, pokedex) => {
+const loadPokedex = (offSet, pokedex, limit = 20) => {
     const tempDex = [...pokedex]
-    return getPokemonList(limit)
+    return getPokemonList(offSet, limit)
         .then(response => {
             return response.data.results
         })
