@@ -30,6 +30,7 @@ class App extends Component {
       .then(tempDex => {
         this.setState({
           pokedex: tempDex,
+          limit: 20,
         })
       })
       .catch(err => {
@@ -134,9 +135,29 @@ class App extends Component {
   };
 
 
-handleScroll = (e) => {
-console.log('here!!')
-}
+  handleScroll = (e) => {
+    console.dir(e)
+  }
+
+  handleTempLoad = (e) => {
+    let newLimit = this.state.limit;
+    loadPokedex(this.state.limit, this.state.pokedex)
+      .then(tempDex => {
+        if ((809 - newLimit) >= 20) {
+          newLimit += 20;
+        }
+        else {
+          newLimit += (809 - newLimit);
+        }
+        this.setState({
+          pokedex: tempDex,
+          limit: newLimit,
+        })
+      })
+      .catch(err => {
+        console.log('error loadingPokeDex: ', err)
+      })
+  }
 
   //'Pokedex', 'Profile', 'Move'
   handleView = (page) => {
@@ -144,9 +165,9 @@ console.log('here!!')
 
       case 'Pokedex':
         return (
-            <div className='offset-1 col-10 nes-container row' onScroll={this.handleScroll}>
+          <div className='offset-1 col-10 nes-container row' >
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
-            </div>
+          </div>
         );
 
       case 'Profile':
@@ -169,12 +190,15 @@ console.log('here!!')
   render() {
     return (
       <>
-        <div className='m-2 nes-container'>
-          <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
-          <hr/>
+        <div className='m-2 nes-container' onScroll={this.handleScroll}>
+          <nav className='navbar sticky-top bg-white row '>
+            <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+          </nav>
+          <hr />
           <div className='row'>
             {this.handleView(this.state.containerView[this.state.view])}
           </div>
+          <button className='m-3 p-3 col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
         </div>
       </>
     );
