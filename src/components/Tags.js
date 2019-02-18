@@ -5,7 +5,7 @@ import './Tags.css'
 
 const Tags = (props) => {
 
-    let allClasses = `nes-btn bothTag ${props.type} disabled`;
+    let allClasses = `col-12 nes-btn bothTag ${props.type} disabled`;
 
     return (
         <button className={allClasses}>{props.name}</button>
