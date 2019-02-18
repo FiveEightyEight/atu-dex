@@ -21,6 +21,7 @@ class App extends Component {
       currentPokemon: null,
       currentMove: null,
       offSet: 0,
+      sprite: 'Default',
       masterList: pokemon,
     }
   }
@@ -75,6 +76,7 @@ class App extends Component {
   handleReturnHome = (e) => {
     this.setState({
       view: 0,
+      sprite: 'Default',
     })
   };
 
@@ -192,6 +194,14 @@ class App extends Component {
     return { offSet, newLimit }
   }
 
+  handleSpriteText = (e) => {
+    if(!e.target.id) return;
+    if(e.target.id === this.state.sprite) return;
+    this.setState({
+      sprite: e.target.id,
+    })
+  };
+
   //'Pokedex', 'Profile', 'Move'
   handleView = (page) => {
     switch (page) {
@@ -208,7 +218,7 @@ class App extends Component {
         return (
 
           <div className='offset-1 col-10 nes-container row' >
-            <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome}/>
+            <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome} handleSpriteText={this.handleSpriteText} spriteText={this.state.sprite}/>
           </div>
 
         );

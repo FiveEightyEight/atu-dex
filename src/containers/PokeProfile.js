@@ -31,14 +31,14 @@ const PokeProfile = (props) => {
                         {
                             sprites.map((e, i) => {
                                 return (
-                                    <div className='col-3' key={i}>
-                                        <img src={e.sprite} />
+                                    <div className='col-3' onMouseOver={props.handleSpriteText} key={i} id={e.name}>
+                                        <img  src={e.sprite} />
                                     </div>
                                 )
                             })
                         }
                         <div className='col-12 text-center'>
-                            <h3 className='text-muted'>Default</h3>
+                            <h3 className='text-muted'>{props.spriteText}</h3>
                         </div>
                     </div>
                 </div>
