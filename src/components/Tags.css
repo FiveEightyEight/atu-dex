@@ -35,7 +35,7 @@
     margin: 10px;
     padding: 5px;
     width: 25%;
-
+    text-transform: capitalize;
 }
 
 .nes-btn.normal {
