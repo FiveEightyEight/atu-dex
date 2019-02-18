@@ -7,7 +7,7 @@ const PokeProfile = (props) => {
     return (
         <>
             <nav aria-label="col-12 breadcrumb">
-                <ol className="breadcrumb">
+                <ol className="breadcrumb bg-white">
                     <li className="breadcrumb-item point" onClick={props.home}><span>Home</span></li>
                     <li className="breadcrumb-item active" aria-current="page">{name}</li>
                 </ol>
