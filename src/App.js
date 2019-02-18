@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import pokemon from './pokemon'
 import NavBar from './components/NavBar';
 import Pokedex from './containers/Pokedex';
-import { getPokemonData, buildPokemon, buildMove, loadPokedex } from './main';
+import PokeProfile from './containers/PokeProfile';
+import { buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
 
@@ -19,18 +20,20 @@ class App extends Component {
       moves: {},
       currentPokemon: null,
       currentMove: null,
-      limit: 0,
+      offSet: 0,
       masterList: pokemon,
     }
   }
 
   componentDidMount() {
     // Populate Pokedex on page load
-    loadPokedex(this.state.limit, this.state.pokedex)
+    // const obj = this.handleLimit();
+    // if (!obj) return;
+    loadPokedex(this.state.offSet, this.state.pokedex)
       .then(tempDex => {
         this.setState({
           pokedex: tempDex,
-          limit: 20,
+          offSet: 20,
         })
       })
       .catch(err => {
@@ -54,7 +57,11 @@ class App extends Component {
 
   handleIndexClick = (e) => {
     // clicking on a pokeIndex component will trigger this function
-    const pokemon = e.target.id;
+    let pokemon = e.target.id;
+    if (pokemon.includes(' ')) {
+      pokemon = pokemon.replace(' ', '-')
+    }
+    console.log(pokemon)
     this.checkPokemon(pokemon);
     return;
   };
@@ -62,6 +69,12 @@ class App extends Component {
   handleMoveClick = (e) => {
     // clicking on a move component will trigger this function
     return;
+  };
+
+  handleReturnHome = (e) => {
+    this.setState({
+      view: 0,
+    })
   };
 
   checkPokemon = (name) => {
@@ -140,23 +153,42 @@ class App extends Component {
   }
 
   handleTempLoad = (e) => {
-    let newLimit = this.state.limit;
-    loadPokedex(this.state.limit, this.state.pokedex)
+    const obj = this.handleLimit();
+    if (!obj) return;
+    const { offSet, newLimit } = obj;
+    // loadPokedex(this.state.limit, this.state.pokedex)
+    loadPokedex(offSet, this.state.pokedex, newLimit)
       .then(tempDex => {
-        if ((809 - newLimit) >= 20) {
-          newLimit += 20;
-        }
-        else {
-          newLimit += (809 - newLimit);
-        }
+        console.log('tempDex: ', tempDex)
+        // if ((809 - newLimit) >= 20) {
+        //   newLimit += 20;
+        // }
+        // else {
+        //   newLimit += (809 - newLimit);
+        // }
         this.setState({
           pokedex: tempDex,
-          limit: newLimit,
+          offSet: offSet + 20,
         })
       })
       .catch(err => {
         console.log('error loadingPokeDex: ', err)
       })
+  }
+
+  handleLimit = () => {
+    let offSet = this.state.offSet
+    let newLimit = 20;
+    if (offSet >= 806) {
+      return false;
+    }
+    if (offSet > 786) {
+      newLimit = (806 - offSet);
+      return { offSet, newLimit }
+    }
+    // offSet += 20; 
+    console.log('offSet: ', offSet, 'newLimit: ', newLimit)
+    return { offSet, newLimit }
   }
 
   //'Pokedex', 'Profile', 'Move'
@@ -167,13 +199,17 @@ class App extends Component {
         return (
           <div className='offset-1 col-10 nes-container row' >
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
+            <button className='col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
           </div>
         );
 
       case 'Profile':
         return (
-          <>
-          </>
+
+          <div className='offset-1 col-10 nes-container row' >
+            <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome}/>
+          </div>
+
         );
 
       case 'Move':
@@ -198,7 +234,6 @@ class App extends Component {
           <div className='row'>
             {this.handleView(this.state.containerView[this.state.view])}
           </div>
-          <button className='m-3 p-3 col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
         </div>
       </>
     );

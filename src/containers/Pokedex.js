@@ -5,7 +5,6 @@ import PokeIndex from '../components/PokeIndex';
 
 
 const Pokedex = (props) => {
-
     return (
         <>
             <div className='col-auto container row'>
