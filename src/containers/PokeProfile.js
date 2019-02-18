@@ -1,6 +1,7 @@
 import React from 'react'
 import './PokeProfile.css'
 import Tags from '../components/Tags'
+import Moves from '../components/Moves'
 
 const PokeProfile = (props) => {
     const { move, name, number, picture, sprites, stats, types, index } = props.pokemon;
@@ -20,7 +21,7 @@ const PokeProfile = (props) => {
                     <img className='col-12' src={picture} />
                     {types.map((e, i) => {
                         return (
-                            <div className='col-6 row' key={i}>
+                            <div className='col-6 row bothTag' key={i}>
                                 <Tags name={e} type={e.toLowerCase()} />
                             </div>
                         )
@@ -43,6 +44,7 @@ const PokeProfile = (props) => {
                     </div>
                 </div>
             </div>
+
             <div className='col-12 row'>
                 <div className='col-12 text-left'>
                     <h3 className=''>Base Stats</h3>
@@ -58,6 +60,15 @@ const PokeProfile = (props) => {
                                 )
                             })
                         }
+                </div>
+            </div>
+            
+            <div className='col-12 row'>
+                <div className='col-12 text-left'>
+                    <h3 className=''>Moves</h3>
+                </div>
+                <div className='row d-flex justify-content-between'>
+                    <Moves move1={'FirstAttack'} move2={'SecondAttack'} move3={'ThirdAttack'} />
                 </div>
             </div>
 
