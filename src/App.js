@@ -49,9 +49,10 @@ class App extends Component {
   handleSearch = (e) => {
     // hitting enter in the searchBar will trigger this function
     if (e.keyCode === 13) {
-      const search = e.target.value;
+      const search = e.target.value.toLowerCase();
       if (!pokemonNames.includes(search)) return;
       this.checkPokemon(search);
+      e.target.value = '';
     };
   };
 
