@@ -994,8 +994,8 @@ const buildMove = (move) => {
         })
         .then(data => {
             return {
-                name: standardMoveName(data.name), 
-                uName: standardMoveName(data.name).toUpperCase(),
+                name: standardName(data.name), 
+                uName: standardName(data.name).toUpperCase(),
                 type: data.type.name[0].toUpperCase() + data.type.name.slice(1),
                 power: data.power,
                 pp: data.pp,
@@ -1026,7 +1026,7 @@ const loadPokedex = (limit, pokedex) => {
                 } else {
                     tempDex[index] = {
                         sprite: `https://img.pokemondb.net/sprites/sun-moon/icon/${pokemon.name}.png`,
-                        name: pokemon.name,
+                        name: standardName(pokemon.name),
                         number: getPokemonNumber(index + 1),
                     }
                 }
@@ -1039,11 +1039,11 @@ const loadPokedex = (limit, pokedex) => {
 
 }
 
-const standardMoveName = (name) => {
+const standardName = (name) => {
     let str = name;
     if(str.includes('-')) {
         const arr = str.split('-')
-        return standardMoveName(arr[0]) + ' ' + standardMoveName(arr[1]); 
+        return standardName(arr[0]) + ' ' + standardName(arr[1]); 
     }
     return str[0].toUpperCase() + str.slice(1);
 };

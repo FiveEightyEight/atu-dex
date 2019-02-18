@@ -8,7 +8,7 @@ const NavBar = (props) => {
     // console.log(props)
     return (
 
-        <div className='row'>
+        <div className='col-12 row'>
             <div className='col-12' style={{ 'height': '20px', 'backgroundColor': 'red' }}> </div>
 
             <div className='col-12 row p-3 align-middle'>

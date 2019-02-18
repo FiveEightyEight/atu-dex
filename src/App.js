@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
 import NavBar from './components/NavBar';
+import Pokedex from './containers/Pokedex';
 import { getPokemonData, buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
@@ -29,6 +30,7 @@ class App extends Component {
       .then(tempDex => {
         this.setState({
           pokedex: tempDex,
+          limit: 20,
         })
       })
       .catch(err => {
@@ -52,6 +54,8 @@ class App extends Component {
 
   handleIndexClick = (e) => {
     // clicking on a pokeIndex component will trigger this function
+    const pokemon = e.target.id;
+    this.checkPokemon(pokemon);
     return;
   };
 
@@ -129,11 +133,72 @@ class App extends Component {
         console.log('err: ', err);
       })
   };
+
+
+  handleScroll = (e) => {
+    console.dir(e)
+  }
+
+  handleTempLoad = (e) => {
+    let newLimit = this.state.limit;
+    loadPokedex(this.state.limit, this.state.pokedex)
+      .then(tempDex => {
+        if ((809 - newLimit) >= 20) {
+          newLimit += 20;
+        }
+        else {
+          newLimit += (809 - newLimit);
+        }
+        this.setState({
+          pokedex: tempDex,
+          limit: newLimit,
+        })
+      })
+      .catch(err => {
+        console.log('error loadingPokeDex: ', err)
+      })
+  }
+
+  //'Pokedex', 'Profile', 'Move'
+  handleView = (page) => {
+    switch (page) {
+
+      case 'Pokedex':
+        return (
+          <div className='offset-1 col-10 nes-container row' >
+            <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
+          </div>
+        );
+
+      case 'Profile':
+        return (
+          <>
+          </>
+        );
+
+      case 'Move':
+        return (
+          <>
+          </>
+        );
+
+      default:
+        return this.renderPage('Pokedex');
+    }
+  }
+
   render() {
     return (
       <>
-        <div className='m-2 nes-container'>
-          <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+        <div className='m-2 nes-container' onScroll={this.handleScroll}>
+          <nav className='navbar sticky-top bg-white row '>
+            <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+          </nav>
+          <hr />
+          <div className='row'>
+            {this.handleView(this.state.containerView[this.state.view])}
+          </div>
+          <button className='m-3 p-3 col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
         </div>
       </>
     );
