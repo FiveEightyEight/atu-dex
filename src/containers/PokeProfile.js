@@ -13,7 +13,7 @@ const PokeProfile = (props) => {
                 </ol>
             </nav>
             <div className='col-12 row'>
-                <h2 className='ml-auto'># {number} {name}</h2>
+                <h2 className='ml-auto'># {number} - {name}</h2>
             </div>
             <div className='col-12 p-4 row'>
                 <div className='col-4 row'>
