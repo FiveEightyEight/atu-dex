@@ -871,49 +871,49 @@ const getSprites = (sprites) => {
     const arr = [];
     if (sprites.front_default) {
         arr[0] = {
-            name: 'default',
+            name: 'Default',
             sprite: sprites.front_default,
         }
     }
     if (sprites.front_shiny) {
         arr[1] = {
-            name: 'shiny',
+            name: 'Shiny',
             sprite: sprites.front_shiny,
         }
     }
     if (sprites.back_default) {
         arr[2] = {
-            name: 'default',
+            name: 'Default',
             sprite: sprites.back_default,
         }
     }
     if (sprites.back_shiny) {
         arr[3] = {
-            name: 'shiny',
+            name: 'Shiny',
             sprite: sprites.back_shiny,
         }
     }
     if (sprites.front_female) {
         arr[4] = {
-            name: 'female',
+            name: 'Female',
             sprite: sprites.front_female,
         }
     }
     if (sprites.front_shiny_female) {
         arr[5] = {
-            name: 'shiny female',
+            name: 'Shiny Female',
             sprite: sprites.front_shiny_female,
         }
     }
     if (sprites.back_female) {
         arr[6] = {
-            name: 'female',
+            name: 'Female',
             sprite: sprites.back_female,
         }
     }
     if (sprites.back_shiny_female) {
         arr[7] = {
-            name: 'shiny female',
+            name: 'Shiny Female',
             sprite: sprites.back_shiny_female,
         }
     }

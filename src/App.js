@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
-import SearchBar from './components/SearchBar';
-import Tags from './components/Tags';
-import Moves from './components/Moves';
 import NavBar from './components/NavBar';
 import Pokedex from './containers/Pokedex';
 import PokeProfile from './containers/PokeProfile';
@@ -23,6 +20,7 @@ class App extends Component {
       currentPokemon: null,
       currentMove: null,
       offSet: 0,
+      sprite: 'Default',
       masterList: pokemon,
     }
   }
@@ -51,9 +49,10 @@ class App extends Component {
   handleSearch = (e) => {
     // hitting enter in the searchBar will trigger this function
     if (e.keyCode === 13) {
-      const search = e.target.value;
+      const search = e.target.value.toLowerCase();
       if (!pokemonNames.includes(search)) return;
       this.checkPokemon(search);
+      e.target.value = '';
     };
   };
 
@@ -76,6 +75,7 @@ class App extends Component {
   handleReturnHome = (e) => {
     this.setState({
       view: 0,
+      sprite: 'Default',
     })
   };
 
@@ -193,13 +193,22 @@ class App extends Component {
     return { offSet, newLimit }
   }
 
+  handleSpriteText = (e) => {
+    if (!e.target.id) return;
+    if (e.target.id === this.state.sprite) return;
+    this.setState({
+      sprite: e.target.id,
+    })
+  };
+
   //'Pokedex', 'Profile', 'Move'
   handleView = (page) => {
     switch (page) {
 
       case 'Pokedex':
         return (
-          <div className='offset-1 col-10 nes-container row' >
+          <div className='offset-1 col-10 nes-container with-title row' >
+            <h2 className='title'>Index</h2>
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
             <button className='col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
           </div>
@@ -208,8 +217,11 @@ class App extends Component {
       case 'Profile':
         return (
 
-          <div className='offset-1 col-10 nes-container row' >
-            <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome}/>
+          <div className='offset-1 col-10 nes-container with-title row' >
+            <h2 className='title'>Pokemon Profile</h2>
+            <div className='col-12 row'>
+              <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome} handleSpriteText={this.handleSpriteText} spriteText={this.state.sprite} />
+            </div>
           </div>
 
         );

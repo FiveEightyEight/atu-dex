@@ -8,13 +8,13 @@ const PokeProfile = (props) => {
     return (
         <>
             <nav aria-label="col-12 breadcrumb">
-                <ol className="breadcrumb">
+                <ol className="breadcrumb bg-white">
                     <li className="breadcrumb-item point" onClick={props.home}><span>Home</span></li>
                     <li className="breadcrumb-item active" aria-current="page">{name}</li>
                 </ol>
             </nav>
             <div className='col-12 row'>
-                <h2 className='ml-auto'># {number} {name}</h2>
+                <h2 className='ml-auto'># {number} - {name}</h2>
             </div>
             <div className='col-12 p-4 row'>
                 <div className='col-4 row'>
@@ -32,14 +32,14 @@ const PokeProfile = (props) => {
                         {
                             sprites.map((e, i) => {
                                 return (
-                                    <div className='col-3' key={i}>
-                                        <img src={e.sprite} />
+                                    <div className='col-3' onMouseOver={props.handleSpriteText} key={i} id={e.name}>
+                                        <img  src={e.sprite} />
                                     </div>
                                 )
                             })
                         }
                         <div className='col-12 text-center'>
-                            <h3 className='text-muted'>Default</h3>
+                            <h3 className='text-muted'>{props.spriteText}</h3>
                         </div>
                     </div>
                 </div>
