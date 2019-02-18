@@ -167,7 +167,7 @@ const pokemon = {
         "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/sandslash.png",
         "index": 27
     },
-    "nidoran♀": {
+    "nidoran-f": {
         "name": "Nidoran-f",
         "number": "029",
         "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/nidoran♀.png",
@@ -185,7 +185,7 @@ const pokemon = {
         "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/nidoqueen.png",
         "index": 30
     },
-    "nidoran♂": {
+    "nidoran-m": {
         "name": "Nidoran-m",
         "number": "032",
         "sprite": "https://img.pokemondb.net/sprites/sun-moon/icon/nidoran♂.png",
