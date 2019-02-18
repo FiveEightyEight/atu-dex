@@ -209,7 +209,7 @@ class App extends Component {
       case 'Pokedex':
         return (
           <div className='offset-1 col-10 nes-container with-title row' >
-            <h2 className='title'>Pokedex</h2>
+            <h2 className='title'>Index</h2>
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
             <button className='col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
           </div>
