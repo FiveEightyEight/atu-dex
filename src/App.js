@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import pokemon from './pokemon'
 import NavBar from './components/NavBar';
 import Pokedex from './containers/Pokedex';
-import { getPokemonData, buildPokemon, buildMove, loadPokedex } from './main';
+import PokeProfile from './containers/PokeProfile';
+import { buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
 
@@ -57,7 +58,7 @@ class App extends Component {
   handleIndexClick = (e) => {
     // clicking on a pokeIndex component will trigger this function
     let pokemon = e.target.id;
-    if(pokemon.includes(' ')) {
+    if (pokemon.includes(' ')) {
       pokemon = pokemon.replace(' ', '-')
     }
     console.log(pokemon)
@@ -68,6 +69,12 @@ class App extends Component {
   handleMoveClick = (e) => {
     // clicking on a move component will trigger this function
     return;
+  };
+
+  handleReturnHome = (e) => {
+    this.setState({
+      view: 0,
+    })
   };
 
   checkPokemon = (name) => {
@@ -148,7 +155,7 @@ class App extends Component {
   handleTempLoad = (e) => {
     const obj = this.handleLimit();
     if (!obj) return;
-    const {offSet, newLimit} = obj;
+    const { offSet, newLimit } = obj;
     // loadPokedex(this.state.limit, this.state.pokedex)
     loadPokedex(offSet, this.state.pokedex, newLimit)
       .then(tempDex => {
@@ -173,15 +180,15 @@ class App extends Component {
     let offSet = this.state.offSet
     let newLimit = 20;
     if (offSet >= 806) {
-        return false;
+      return false;
     }
-    if(offSet > 786) {
-        newLimit = (806 - offSet);
-        return {offSet, newLimit}
+    if (offSet > 786) {
+      newLimit = (806 - offSet);
+      return { offSet, newLimit }
     }
     // offSet += 20; 
-    console.log('offSet: ', offSet, 'newLimit: ', newLimit )
-     return {offSet, newLimit}
+    console.log('offSet: ', offSet, 'newLimit: ', newLimit)
+    return { offSet, newLimit }
   }
 
   //'Pokedex', 'Profile', 'Move'
@@ -198,8 +205,11 @@ class App extends Component {
 
       case 'Profile':
         return (
-          <>
-          </>
+
+          <div className='offset-1 col-10 nes-container row' >
+            <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome}/>
+          </div>
+
         );
 
       case 'Move':
