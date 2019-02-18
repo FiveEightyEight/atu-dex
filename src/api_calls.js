@@ -1,5 +1,5 @@
 import axios from 'axios';
-/*
+
 const getMoveList = (poke_name = `bulbasaur`) => {
   return axios.get(`https://pokeapi.co/api/v2/pokemon/${poke_name}`)
     .then(response => {
@@ -10,7 +10,7 @@ const getMoveList = (poke_name = `bulbasaur`) => {
     })
 }
 console.log(getMoveList())
-*/
+
 
 
 const getTags = (poke_name = `bulbasaur`) => {
