@@ -167,6 +167,7 @@ class App extends Component {
         return (
           <div className='offset-1 col-10 nes-container row' >
             <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} />
+            <button className='col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
           </div>
         );
 
@@ -198,7 +199,6 @@ class App extends Component {
           <div className='row'>
             {this.handleView(this.state.containerView[this.state.view])}
           </div>
-          <button className='m-3 p-3 col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
         </div>
       </>
     );
