@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import pokemon from './pokemon'
+import SearchBar from './components/SearchBar';
+import Tags from './components/Tags';
+import Moves from './components/Moves';
 import NavBar from './components/NavBar';
 import Pokedex from './containers/Pokedex';
 import PokeProfile from './containers/PokeProfile';
 import { buildPokemon, buildMove, loadPokedex } from './main';
 
 const pokemonNames = Object.keys(pokemon);
-
 
 class App extends Component {
   constructor(props) {
