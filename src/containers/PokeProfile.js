@@ -19,7 +19,7 @@ const PokeProfile = (props) => {
                     <li className="breadcrumb-item active" aria-current="page">{name}</li>
                 </ol>
             </nav>
-            <div className='col-12 row'>
+            <div className='ml-5 text-right col-12 row'>
                 <h2 className='ml-auto'># {number} - {name}</h2>
             </div>
             <div className='col-12 p-4 row'>
