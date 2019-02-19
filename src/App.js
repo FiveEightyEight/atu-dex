@@ -216,6 +216,7 @@ class App extends Component {
 
 
   handleScroll = (e) => {
+    if(this.state.view > 0) return;
     const lastDiv = document.querySelector('div.js-dex > div:last-child')
     let lastDivOffset = lastDiv.offsetTop + lastDiv.clientHeight;
     let pageOffset = window.pageYOffset + window.innerHeight;
