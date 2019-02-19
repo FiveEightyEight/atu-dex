@@ -17,8 +17,8 @@ const Moves = (props) => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <div className='text-center p-3'>
-                                <h2 className='p-1'>{uName}</h2>
+                            <div className='text-center'>
+                                <h2 className='p-2'>{uName}</h2>
                                 <h4>Type: {type}</h4>
                                 <h4>Power: {power}</h4>
                                 <h4>PP: {pp}</h4>
