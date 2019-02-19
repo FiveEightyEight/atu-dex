@@ -2,7 +2,9 @@
 
 ___
 # Assignment:
-![trainers](src/assets/pokedex.jpg)
+|Trainers|
+|:------:|
+|![trainers](src/assets/pokedex.jpg)|
 #### Build a PokeDex:
 * **Lab**: [URL](https://github.com/mmosayed/PCNW-U4-Lab2)
 
