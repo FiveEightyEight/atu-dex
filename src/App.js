@@ -29,9 +29,13 @@ class App extends Component {
     // Populate Pokedex on page load
     // const obj = this.handleLimit();
     // if (!obj) return;
+    const savedPokemon = JSON.parse(localStorage.getItem('pokemons')) || {};
+    const savedMoves = JSON.parse(localStorage.getItem('pokemoves')) || {};
     loadPokedex(this.state.offSet, this.state.pokedex)
       .then(tempDex => {
         this.setState({
+          pokemon: savedPokemon,
+          moves: savedMoves,
           pokedex: tempDex,
           offSet: 20,
         })
@@ -105,6 +109,7 @@ class App extends Component {
       .then(data => {
         const pokemonObj = this.state.pokemon;
         pokemonObj[cleanName] = data;
+        localStorage.setItem('pokemons', JSON.stringify(pokemonObj))
         this.setState({
           pokemon: pokemonObj
         }, _ => {
@@ -139,6 +144,7 @@ class App extends Component {
       .then(data => {
         const movesObj = this.state.moves;
         movesObj[cleanName] = data;
+        localStorage.setItem('pokemoves', JSON.stringify(movesObj))
         this.setState({
           moves: movesObj
         }, _ => {
