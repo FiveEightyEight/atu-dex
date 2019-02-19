@@ -2,9 +2,11 @@
 
 ___
 # Assignment:
-
+|Trainers|
+|:------:|
+|![trainers](src/assets/pokedex.jpg)|
 #### Build a PokeDex:
-* **Lab**: [url](https://github.com/mmosayed/PCNW-U4-Lab2)
+* **Lab**: [URL](https://github.com/mmosayed/PCNW-U4-Lab2)
 
 ### Breakdown:
 1. Containers:
@@ -17,7 +19,7 @@ ___
         * NavBar
         * Tags
         * Moves
-        * MovesModal
+
 
 2. Components:
     * NavBar: Contains searchBar component
@@ -25,7 +27,7 @@ ___
     * PokeIndex:
     * Search Bar:
     * Moves: A Button component
-    * MovesModal:
+
 ___
 
 # Resources:
