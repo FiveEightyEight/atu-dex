@@ -4,7 +4,13 @@ import Tags from '../components/Tags'
 import Moves from '../components/Moves'
 
 const PokeProfile = (props) => {
-    const { move, name, number, picture, sprites, stats, types, index } = props.pokemon;
+    const { moves, name, number, picture, sprites, stats, types, index } = props.pokemon;
+
+    const newMoves = moves.reduce((acc, e, i) => {
+        if (i <= 3) acc.push(e)
+        return acc
+    }, [])
+
     return (
         <>
             <nav aria-label="col-12 breadcrumb">
@@ -68,7 +74,13 @@ const PokeProfile = (props) => {
                     <h3 className=''>Moves</h3>
                 </div>
                 <div className='row d-flex justify-content-between'>
-                    <Moves move1={'FirstAttack'} move2={'SecondAttack'} move3={'ThirdAttack'} />
+                    {newMoves.map((e, i) => {
+                        return (
+                            <div className='col-3 row' key={i}>
+                                <Moves move={e} handleMoveClick={props.handleMoveClick}/>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
 

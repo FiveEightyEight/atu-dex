@@ -22,6 +22,7 @@ const getTags = (poke_name = `bulbasaur`) => {
             }))
         })
 }
+
 console.log(getTags())
 
 
