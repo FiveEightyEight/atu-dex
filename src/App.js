@@ -18,7 +18,7 @@ class App extends Component {
       pokemon: {},
       moves: {},
       currentPokemon: null,
-      currentMove: null,
+      currentMove: {uName: "", type: "", power: "",pp: "",},
       offSet: 0,
       sprite: 'Default',
       masterList: pokemon,
@@ -70,6 +70,7 @@ class App extends Component {
   handleMoveClick = (e) => {
     // clicking on a move component will trigger this function
     console.log(e.target.id)
+    this.checkMove (e.target.id)
     return;
   };
 
@@ -124,7 +125,6 @@ class App extends Component {
       const currentMove = this.state.moves[cleanName]
       this.setState({
         currentMove: currentMove,
-        view: 2,
       })
     } else {
       this.addMove(cleanName);
@@ -221,7 +221,13 @@ class App extends Component {
           <div className='offset-1 col-10 nes-container with-title row' >
             <h2 className='title'>Pokemon Profile</h2>
             <div className='col-12 row'>
-              <PokeProfile pokemon={this.state.currentPokemon} home={this.handleReturnHome} handleSpriteText={this.handleSpriteText} spriteText={this.state.sprite} handleMoveClick={this.handleMoveClick}/>
+              <PokeProfile 
+              pokemon={this.state.currentPokemon} 
+              home={this.handleReturnHome} 
+              handleSpriteText={this.handleSpriteText} 
+              spriteText={this.state.sprite} 
+              handleMoveClick={this.handleMoveClick} 
+              modal={this.state.currentMove}/>
             </div>
           </div>
 

@@ -77,7 +77,7 @@ const PokeProfile = (props) => {
                     {newMoves.map((e, i) => {
                         return (
                             <div className='col-3 row' key={i}>
-                                <Moves move={e} handleMoveClick={props.handleMoveClick}/>
+                                <Moves move={e} handleMoveClick={props.handleMoveClick} modal={props.modal}/>
                             </div>
                         )
                     })}
