@@ -7,7 +7,7 @@ const Moves = (props) => {
 
     return (
         <>
-            <button className={allClasses}>{props.move1}</button><button className={allClasses}>{props.move2}</button><button className={allClasses}>{props.move3}</button>
+            <button className={allClasses} onClick={props.handleMoveClick} id={props.move}>{props.move}</button>
         </>
     )
 }
