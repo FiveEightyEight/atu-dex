@@ -98,6 +98,9 @@ class App extends Component {
       .catch(err => {
         console.log('error loadingPokeDex: ', err)
       })
+      window.addEventListener('scroll', e => {
+        this.handleScroll(e)
+      })
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -213,7 +216,14 @@ class App extends Component {
 
 
   handleScroll = (e) => {
-    console.dir(e)
+    const lastDiv = document.querySelector('div.js-dex > div:last-child')
+    let lastDivOffset = lastDiv.offsetTop + lastDiv.clientHeight;
+    let pageOffset = window.pageYOffset + window.innerHeight;
+    let bottomOffset = 20;
+    if (pageOffset > lastDivOffset - bottomOffset) {
+      this.handleTempLoad()
+    }
+    return;
   }
 
   handleTempLoad = (e) => {
@@ -223,13 +233,6 @@ class App extends Component {
     // loadPokedex(this.state.limit, this.state.pokedex)
     loadPokedex(offSet, this.state.pokedex, newLimit)
       .then(tempDex => {
-        console.log('tempDex: ', tempDex)
-        // if ((809 - newLimit) >= 20) {
-        //   newLimit += 20;
-        // }
-        // else {
-        //   newLimit += (809 - newLimit);
-        // }
         this.setState({
           pokedex: tempDex,
           offSet: offSet + 20,
@@ -251,7 +254,6 @@ class App extends Component {
       return { offSet, newLimit }
     }
     // offSet += 20; 
-    console.log('offSet: ', offSet, 'newLimit: ', newLimit)
     return { offSet, newLimit }
   }
 
