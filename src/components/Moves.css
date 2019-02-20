@@ -1,3 +1,7 @@
 .nes-btn.moves {
     margin: 10px;
 }
+
+.cap {
+    text-transform: capitalize;
+}
