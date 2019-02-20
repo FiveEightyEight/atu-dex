@@ -6,6 +6,13 @@ import PokeProfile from './containers/PokeProfile';
 import { buildPokemon, buildMove, loadPokedex } from './main';
 
 let pokemonNames = Object.keys(pokemon);
+const js = { uName: "JavaScript", type: "Functional", power: "85%", pp: "99", };
+const html = { uName: "HTML", type: "Markup", power: "75%", pp: "99", };
+const html5 = { uName: "HTML5", type: "Markup", power: "75%", pp: "99", }
+const css = { uName: "CSS", type: "Markup", power: "36%", pp: "99", }
+const css3 = { uName: "CSS3", type: "Markup", power: "38%", pp: "99", }
+const react = { uName: "REACT", type: "Framework", power: "40%", pp: "99", };
+const nodejs = { uName: "NodeJS", type: "Framework", power: "66%", pp: "99", };
 const robert = {
   moves: ['JS', 'NodeJS', 'HTML', 'CSS'],
   name: "Five",
@@ -86,6 +93,14 @@ class App extends Component {
     savedPokemon['robert'] = robert;
     savedPokemon['heriberto'] = heri;
     savedPokemon['van'] = van;
+    savedMoves['JavaScript'] = js;
+    savedMoves['JS'] = js;
+    savedMoves['React'] = react;
+    savedMoves['HTML'] = html;
+    savedMoves['HTML5'] = html5;
+    savedMoves['NodeJs'] = nodejs;
+    savedMoves['CSS'] = css;
+    savedMoves['CSS3'] = css3;
     loadPokedex(this.state.offSet, this.state.pokedex)
       .then(tempDex => {
         this.setState({
@@ -97,6 +112,9 @@ class App extends Component {
       })
       .catch(err => {
         console.log('error loadingPokeDex: ', err)
+      })
+      window.addEventListener('scroll', e => {
+        this.handleScroll(e)
       })
   }
 
@@ -213,7 +231,15 @@ class App extends Component {
 
 
   handleScroll = (e) => {
-    console.dir(e)
+    if(this.state.view > 0) return;
+    const lastDiv = document.querySelector('div.js-dex > div:last-child')
+    let lastDivOffset = lastDiv.offsetTop + lastDiv.clientHeight;
+    let pageOffset = window.pageYOffset + window.innerHeight;
+    let bottomOffset = 20;
+    if (pageOffset > lastDivOffset - bottomOffset) {
+      this.handleTempLoad()
+    }
+    return;
   }
 
   handleTempLoad = (e) => {
@@ -223,13 +249,6 @@ class App extends Component {
     // loadPokedex(this.state.limit, this.state.pokedex)
     loadPokedex(offSet, this.state.pokedex, newLimit)
       .then(tempDex => {
-        console.log('tempDex: ', tempDex)
-        // if ((809 - newLimit) >= 20) {
-        //   newLimit += 20;
-        // }
-        // else {
-        //   newLimit += (809 - newLimit);
-        // }
         this.setState({
           pokedex: tempDex,
           offSet: offSet + 20,
@@ -251,7 +270,6 @@ class App extends Component {
       return { offSet, newLimit }
     }
     // offSet += 20; 
-    console.log('offSet: ', offSet, 'newLimit: ', newLimit)
     return { offSet, newLimit }
   }
 
