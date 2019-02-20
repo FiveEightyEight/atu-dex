@@ -7,7 +7,7 @@ import { buildPokemon, buildMove, loadPokedex } from './main';
 
 let pokemonNames = Object.keys(pokemon);
 const robert = {
-  moves: ['JavaScript', 'NodeJS', 'HTML', 'CSS'],
+  moves: ['JS', 'NodeJS', 'HTML', 'CSS'],
   name: "Five",
   number: "588",
   picture: "https://lh3.googleusercontent.com/rA2RNrLVDuu1g60B-CA1ueP1TQ-_WlYO7s3ATGGz1YJiaYmK35p3EJVmIFsSu31xnmGJQIIxcLuq7kxZ10dUGQ4SfxoJEHT2bw2VpRc3TmM4Zun8m9Aq4_YDAb1iQjQRroa-xBVNgA7HXpQkX5uotEM-QV8no_QHl0WFde-cDSaZ2qDBfk7ZGOKN7-E0y_TVIrzfNq_Z5tOGxmRUxM_tAuyEJ6EJfoPV4AqWAnTSx_VW11s3qVUR7VWWTMX1ZuaBa1eUiHhc9NBHwnIU1ZnBhpMcAuZneoEHUubRuNUSIYmyYB-iNClr-xOk9CcaQqY2U4vXQspxEdo7OcngSxb4jYwUw5Y7Mw0HlPT8DnwTJF-cxZZmt_W11-OLUCXddaiT3Wp3ZPi54dqhDRY03o4tni_8YynQAXo9As7WzkGRCM-U12N4iGBYXR6R2laQzqYJArEbmvjO0YoduKsBdLMDYVAo2_omkz7Xlx2ErXVw4yAUPgL3cdr4aGzwT30U2UQFLIljBPQaEk8RlXcomC1MY4mJPmhzgggCQhX73zmJy7UgR6uxvL7CmrXBOTGxtb4nYTZcbm0MZjZgGNNd2edIBx9gpuzBvx8G7XaMkjE3nggZGU7gzcVAcvhbQ5bYrO2MyRPap4b85SUHfD68ZUJThVRH-DsEC2wa8vRorh37mGgPLUbRpa65DDKS8Zo9_ExRyodKk_2jS1ZUNIQT6B__WWD_=w370-h807-no",
@@ -23,7 +23,7 @@ const robert = {
 
 const heri = {
   index: 0,
-moves:  ['JavaScript','CSS3', 'HTML5', 'React'],
+moves:  ['JS','CSS3', 'HTML5', 'React'],
 name: "Heriberto",
 number: "813", // pick a number
 picture: "https://lh3.googleusercontent.com/2mndNz_NBLKZM8W8rnP6M7uvXLEhvqbdRtIb8peE4WP4PKcF74hkRyue2n5UttK9LzsSIBQIZXho3RgMpmK8fgSs60y0BwYTlxeenqwQkBiXdMJTEdbd51CBHTyFE9wCn00qTwO0IxJaQd6XvQfSHLl4Y-2y0huX7TrJffROnXzQ_I2OnhaTCtotezXdMHyTpslEVRZnxSyp085FIaeoxpJybSW2_RmzmS1WhbGDvSA6kgbbSXmuby02YbZntUdNdvpdQd9wijHthVHKKXw-lhAEqmr_we-yQokwqIpI-jQOLlmCK-_ORiCc28ljG-KWq-qCBQgNFxS-kXyFRBngxvOcH5o03voGFm3n2idFwS2vPvVCTybcsfFiGesARrMuX8ieLSAq-os0MJHPjOqitEFrX2fxChlAw49T4nGC1B3TN2mZINrsg9gNdXnY8HW59k3QqZkA64Zu-nxkuk__EH0-M20hkABFSZauuh5v8GvEuta24wC57wMZ_AlV47Qtcr00y52lz9_JafSAllwsmaIq5hbV3AYDZ37kImCsy2mjY3zAGH-ZT-tDqQ6VMTfBAzqfoTxyxt5g9mr75sy1VKAT9FapdE7rGqBpr5zr7tykT-hLbi9PdVvSnfidTBWuwzolt4Tb85PG2E_DgNda_R76yehWxLK6dlKq44zAbArbHY3s-hAjK_QrouBGzo81TcbNFT_S_hshxnUDV14kDBZT=w393-h807-no",
@@ -42,7 +42,7 @@ types:  ["Ghost", "Fire"]
 
 const van = {
   index: 0,
-  moves:  ['JavaScript','CSS3', 'HTML5', 'React'],
+  moves:  ['JS','CSS3', 'HTML5', 'React'],
 name: "The MiniVan ",
 number: "323", // pick a number
 picture: "https://lh3.googleusercontent.com/Yuvz7XHOeIiu2KmpAkRKFzqE8TZsZpnWkaIcCWm3PxxjfyEqLB3r6Dvwf-8v-4DVOBt1WvIuy8v7U2f0Cx2i-3cTdKx52KrGc-ploa1_t7jZUFa5eSab_ot9adL1ppytcpvFoQ2WJbJn1tWJAZwQTGejlyNdS8ZDLpeEVp3n8gOrko5SjQlFLEMpIrSoe0OtHTqoG7x9qCGRjdqW48XrKo0XwT6gNlTfw2Yzs1p1x6VG26HN7uMdmq7rrw_zCgZkk-FTtgARsaxl4nxZ0l0Fd_kvK0JJ2EXYfNBpMlAbXfFSs7IZ2UTbhHhQERN6g19T_QnpMnjMH0KnsKLrNIKkBJgKM6BHOBuP3UyiEfaWyz6zbQSsu0sNpRyCgTBHdHjWYjeIYQf75O2Rxx39P5-HB9fxJsqoGesZ_POkO4Q-LxYG0xBgKPFBU3fFPPqNj9IgjsdjXARGlpX41q1kXKrlhoqRg2ThTyl4ETzEgWUaK_S2pwYf1wYZIMmhhzJF_BFw3oaDudCPI5P-vGYUecPV7fGnII6B5qobwevkSM__yElhuvSoZ3HFVJuoyKifwrZBxLCnxYyQnRceohT5G4ZkdMoMDdMaGLZ9AnTAQNbT66FM3SvApmrJQhQPV_b6d9eBX_cRhyC1dFw8wbJn_tVTzq3vgWVoDEC_2eEz5jmar_3INNqBUVAvSCS5HxgFS_eQAy7-qdmXvYDCmuo_wtmrC9Qm=w403-h807-no",
