@@ -73,10 +73,10 @@ const PokeProfile = (props) => {
                 <div className='col-12 text-left'>
                     <h3 className=''>Moves</h3>
                 </div>
-                <div className='row d-flex justify-content-between'>
+                <div className='row justify-content-around cap'>
                     {newMoves.map((e, i) => {
                         return (
-                            <div className='col-3 row' key={i}>
+                            <div className='col-3 row justify-content-around' key={i}>
                                 <Moves move={e} handleMoveClick={props.handleMoveClick} modal={props.modal}/>
                             </div>
                         )

@@ -3,7 +3,7 @@ import './Moves.css'
 
 const Moves = (props) => {
 
-    let allClasses = `nes-btn moves`;
+    let allClasses = `nes-btn moves cap`;
     const {uName, pp, power, type} = props.modal
     return (
         <>
