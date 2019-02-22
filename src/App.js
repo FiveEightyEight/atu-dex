@@ -135,14 +135,22 @@ class App extends Component {
 
   handleIndexClick = (e) => {
     // clicking on a pokeIndex component will trigger this function
+    console.log('Here handleIndexClick')
     let pokemon = e.target.id;
     if (pokemon.includes(' ')) {
       pokemon = pokemon.replace(' ', '-')
     }
-    console.log(pokemon)
     this.checkPokemon(pokemon);
     return;
   };
+
+  handleDrpDwnOnClick = (e) => {
+    const search = e.target.value.toLowerCase();
+      if (!pokemonNames.includes(search)) return;
+      this.checkPokemon(search);
+      e.target.value = '';
+    // console.log (e.target.value)
+  }
 
   handleMoveClick = (e) => {
     // clicking on a move component will trigger this function
@@ -329,7 +337,7 @@ class App extends Component {
       <>
         <div className='m-2 nes-container' onScroll={this.handleScroll}>
           <nav className='navbar sticky-top bg-white row '>
-            <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} />
+            <NavBar pokemonList={pokemonNames} handleSearch={this.handleSearch} handleDrpDwnOnClick={this.handleDrpDwnOnClick}/>
           </nav>
           <hr />
           <div className='row'>
