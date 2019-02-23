@@ -9,7 +9,7 @@ const Pokedex = (props) => {
         <>
             <div className='col-auto container row js-dex'>
                 {props.pokedex.map((pokemon, i) => {
-                    return <PokeIndex pokeInfo={pokemon} handleIndexClick={props.handleIndexClick} key={i} />
+                    return <PokeIndex pokeInfo={pokemon} handleIndexClick={props.handleIndexClick} key={i} loading={props.loading}/>
                 })}
             </div>
         </>

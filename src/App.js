@@ -80,7 +80,7 @@ class App extends Component {
       currentMove: { uName: "", type: "", power: "", pp: "", },
       offSet: 0,
       sprite: 'Default',
-      loading: false,
+      loading: true,
       masterList: pokemon,
     }
   }
@@ -109,6 +109,7 @@ class App extends Component {
           moves: savedMoves,
           pokedex: tempDex,
           offSet: 20,
+          loading: false,
         })
       })
       .catch(err => {
@@ -272,6 +273,7 @@ class App extends Component {
       .then(setupDex => {
         this.setState({
           pokedex: setupDex,
+          loading: true,
         })
         return;
       })
@@ -282,6 +284,7 @@ class App extends Component {
         this.setState({
           pokedex: tempDex,
           offSet: offSet + 20,
+          loading: false,
         })
       })
       .catch(err => {
@@ -319,7 +322,7 @@ class App extends Component {
         return (
           <div className='offset-1 col-10 nes-container with-title row' >
             <h2 className='title'>Index</h2>
-            <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} load={this.state.loading} />
+            <Pokedex pokedex={this.state.pokedex} handleIndexClick={this.handleIndexClick} loading={this.state.loading} />
             <button className='col-12 nes-btn is-error' onClick={this.handleTempLoad}>Load More</button>
           </div>
         );
