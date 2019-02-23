@@ -80,6 +80,7 @@ class App extends Component {
       currentMove: { uName: "", type: "", power: "", pp: "", },
       offSet: 0,
       sprite: 'Default',
+      loading: false,
       masterList: pokemon,
     }
   }
