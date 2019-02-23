@@ -4,7 +4,7 @@ import Tags from '../components/Tags'
 import Moves from '../components/Moves'
 
 const PokeProfile = (props) => {
-    const { moves, name, number, picture, sprites, stats, types, index } = props.pokemon;
+    const { moves, name, number, picture, sprites, stats, types } = props.pokemon;
 
     const newMoves = moves.reduce((acc, e, i) => {
         if (i <= 3) acc.push(e)
@@ -24,7 +24,7 @@ const PokeProfile = (props) => {
             </div>
             <div className='col-12 p-4 row'>
                 <div className='col-4 row'>
-                    <img className='col-12' src={picture} />
+                    <img className='col-12' alt={`${name} a pokemon, high resolution`} src={picture} />
                     {types.map((e, i) => {
                         return (
                             <div className='col-6 row bothTag' key={i}>
@@ -39,7 +39,7 @@ const PokeProfile = (props) => {
                             sprites.map((e, i) => {
                                 return (
                                     <div className='col-3' onMouseOver={props.handleSpriteText} key={i} id={e.name}>
-                                        <img  src={e.sprite} />
+                                        <img  src={e.sprite} alt={`${name} a pokemon, low resolution sprite`}/>
                                     </div>
                                 )
                             })

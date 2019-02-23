@@ -8,7 +8,7 @@ const PokeIndex = (props) => {
     if (loading) {
         return (
             <div className='col-12 nes-container is-rounded row point mouseOver' style={{'maxHeight': '80px'}}>
-                <img className='col-1' alt='image loading' src={loadImg} style={{ 'height': '40px' }} />
+                <img className='col-1' alt='loading' src={loadImg} style={{ 'height': '40px' }} />
                 <h3 className='col-3' >Loading...</h3>
                 <h3 className='ml-auto col-3' ># ... </h3>
             </div>
