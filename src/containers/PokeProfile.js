@@ -2,9 +2,11 @@ import React from 'react'
 import './PokeProfile.css'
 import Tags from '../components/Tags'
 import Moves from '../components/Moves'
+import pikeLoad from '../assets/pika_load.gif'
+import ballLoad from '../assets/pokeball-8bit.gif'
 
 const PokeProfile = (props) => {
-    const { moves, name, number, picture, sprites, stats, types, index } = props.pokemon;
+    const { moves, name, number, picture, sprites, stats, types } = props.pokemon;
 
     const newMoves = moves.reduce((acc, e, i) => {
         if (i <= 3) acc.push(e)
@@ -24,7 +26,7 @@ const PokeProfile = (props) => {
             </div>
             <div className='col-12 p-4 row'>
                 <div className='col-4 row'>
-                    <img className='col-12' src={picture} />
+                    <img className='col-12' alt={`${name} a pokemon, high resolution`} src={picture} />
                     {types.map((e, i) => {
                         return (
                             <div className='col-6 row bothTag' key={i}>
@@ -35,14 +37,11 @@ const PokeProfile = (props) => {
                 </div>
                 <div className='offset-1 col-7 row'>
                     <div className='col-12 row d-flex justify-content-between'>
-                        {
-                            sprites.map((e, i) => {
-                                return (
-                                    <div className='col-3' onMouseOver={props.handleSpriteText} key={i} id={e.name}>
-                                        <img  src={e.sprite} />
-                                    </div>
-                                )
-                            })
+                        {(sprites) ?  sprites.map((e, i) => { return (<div className='col-3' onMouseOver={props.handleSpriteText} key={i} id={e.name}> <img src={e.sprite} alt={`${name} a pokemon, low resolution sprite`} /> </div> ) })
+                             : 
+                             <div className='col-3' onMouseOver={props.handleSpriteText} >
+                                <img src={ballLoad} alt={'sprite'} />
+                            </div>
                         }
                         <div className='col-12 text-center'>
                             <h3 className='text-muted'>{props.spriteText}</h3>
@@ -56,19 +55,19 @@ const PokeProfile = (props) => {
                     <h3 className=''>Base Stats</h3>
                 </div>
                 <div className='nes-container is-rounded row d-flex justify-content-between'>
-                        {
-                            stats.map( (e, i) => {
-                                return (
-                                    <div className='col-2 text-center row' key={i}>
-                                        <span className='h6 col-12 text-muted'>{e.name}</span>
-                                        <span className='h6 col-12'>{e.base_stat}</span>
-                                    </div>
-                                )
-                            })
-                        }
+                    {
+                        stats.map((e, i) => {
+                            return (
+                                <div className='col-2 text-center row' key={i}>
+                                    <span className='h6 col-12 text-muted'>{e.name}</span>
+                                    <span className='h6 col-12'>{e.base_stat}</span>
+                                </div>
+                            )
+                        })
+                    }
                 </div>
             </div>
-            
+
             <div className='col-12 row'>
                 <div className='col-12 text-left'>
                     <h3 className=''>Moves</h3>
@@ -77,7 +76,7 @@ const PokeProfile = (props) => {
                     {newMoves.map((e, i) => {
                         return (
                             <div className='col-3 row justify-content-around' key={i}>
-                                <Moves move={e} handleMoveClick={props.handleMoveClick} modal={props.modal}/>
+                                <Moves move={e} handleMoveClick={props.handleMoveClick} modal={props.modal} />
                             </div>
                         )
                     })}
